@@ -122,7 +122,7 @@
              cv  =document.getElementById('mycanvas');
              ctx  = cv.getContext('2d');
 
-            player =new Cuadraro(superX,superY+5,30,30,'red');
+            player =new Cuadraro(superX,superY,30,30,'red');
             playerAmigo1 =new Cuadraro(superX-2,superY-20,30,30,'red');
             playerAmigo2 =new Cuadraro(superX-2,superY-40,30,30,'red');
             
@@ -265,7 +265,38 @@
                 ctx.fillText("Encontraste a pikachu",230,230);
 
             }
-        
+            for(var i = 0; i < 200; i++) {
+                if(player.se_tocan(obstaculos[i])){
+
+                    if(direction == 'right'){
+                        player.x -=speed
+                        playerAmigo1.x = player.x;
+                        playerAmigo2.x = player.x;
+                           
+                    }
+                    if(direction == 'left'){
+                        player.x +=speed;
+                        playerAmigo1.x =player.x;
+                        playerAmigo2.x = player.x;
+                           
+                        
+                    }
+                    if(direction == 'down'){
+                        player.y -=speed;
+                        playerAmigo1.y =player.y+20;
+                        playerAmigo2.y = player.y+40;
+                           
+                        
+                    }
+                    if(direction == 'up'){
+                        player.y +=speed;
+                        playerAmigo1.y =player.y+20;
+                        playerAmigo2.y =player.y+40;
+                           
+                        
+                    }
+                }
+            }
             
             
               
