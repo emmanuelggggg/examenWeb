@@ -26,6 +26,7 @@
         var score=0;
         var speed =10;
         var pausa= false;
+        var gameOver= false;
         var obstaculos = [];
         var coordenadas = [
             [0, 0, 10, 1200],[1190, 0, 10, 1200],[0, 0, 1200, 10],
@@ -114,6 +115,7 @@
         var amigo2Atras = new Image();
 
         var pika = new Image();
+        var musicaAmbiental = new Audio();
         
         function start(){
 
@@ -145,7 +147,7 @@
             amigo2Atras.src = '/img&sonidos/amigo2atras.png';
 
             pika.src = '/img&sonidos/pikachu.png';
-
+            musicaAmbiental.src = '/img&sonidos/pokemonSound.mp3';
 
             for (var i = 0; i < 200; i++) {
                 var n = new Cuadraro(coordenadas[i][0], coordenadas[i][1], coordenadas[i][2], coordenadas[i][3], "white");
@@ -193,7 +195,7 @@
         })
       
         function paint(){
-
+            musicaAmbiental.play();
             window.requestAnimationFrame(paint);
            
             ctx.drawImage(bg,0,0,1400,1000)
@@ -234,11 +236,12 @@
                 update();
             }else{
                 ctx.fillStyle='rgb(0,0,0,0.5)';
-                ctx.fillRect(0,0,500,500);
+                ctx.fillRect(0,0,1400,1000);
 
                 ctx.fillStyle='white';
                 ctx.font ="30px Arial"
-                ctx.fillText("P A U S E",230,230);
+                ctx.fillText("P A U S E",700,500);
+                musicaAmbiental.pause();
                 
             }
             
@@ -253,8 +256,13 @@
         function update(){
     
             if(player.se_tocan(pikachu)){
-                score += 5;
-                speed +=0.3;
+                gameOver =(gameOver)? false : true;
+                ctx.fillStyle='rgb(0,0,0,0.5)';
+                ctx.fillRect(0,0,1400,1000);
+
+                ctx.fillStyle='white';
+                ctx.font ="30px Arial"
+                ctx.fillText("Encontraste a pikachu",230,230);
 
             }
         
