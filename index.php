@@ -22,7 +22,7 @@
         var  player2 = null;
         var direction='';
         var score=0;
-        var speed =4;
+        var speed =60;
         var pausa= false;
         var obstaculos = new Array(3);
 
@@ -39,7 +39,7 @@
              ctx  = cv.getContext('2d');
 
             player =new Cuadraro(superX,superY,40,40,'red');
-    
+            
 
 
             player2 =new Cuadraro(generateRandomIntegerInRange(500),
@@ -66,72 +66,38 @@
             //arriba
             if(e.keyCode == 87 || e.keyCode == 38){
                 direction='up';
+                player.y -=speed;
 
             }
             // abajo
             if(e.keyCode == 83 || e.keyCode == 40){
               direction='down';
+              player.y +=speed;
+              
             }
             // derecha
             if(e.keyCode == 65 || e.keyCode == 37){
                direction='left';
+               player.x -=speed;
             }
             //abajo
             if(e.keyCode == 68 || e.keyCode == 39){
                  direction='right';
+                 player.x +=speed;
             }
             if(e.keyCode == 32){
                 pausa =(pausa)? false : true;
             }
         })
-        document.addEventListener('keyup',function(e){
-            // console.log(e);
-            //arriba
-            if(e.keyCode == 87 || e.keyCode == 38){
-                direction='up';
-                speed =0;
-
-            }
-            // abajo
-            if(e.keyCode == 83 || e.keyCode == 40){
-              direction='down';
-              speed =0;
-            }
-            // derecha
-            if(e.keyCode == 65 || e.keyCode == 37){
-               direction='left';
-               speed =0;
-            }
-            //abajo
-            if(e.keyCode == 68 || e.keyCode == 39){
-                 direction='right';
-                 speed =0;
-            }
-           
-        })
+      
         function paint(){
 
             window.requestAnimationFrame(paint);
+
+         
             ctx.drawImage(bg,0,0,1400,1000)
            
-            
-            if(direction == 'right'){
-                ctx.drawImage(jugadorDerecha,player.x,player.y,50,55); 
-                
-            }
-            if(direction == 'left'){
-                ctx.drawImage(jugadorIzquierda,player.x,player.y,50,55); 
-               
-            }
-            if(direction == 'down'){
-                ctx.drawImage(jugadorFrente,player.x,player.y,50,55);  
-            }
-            if(direction == 'up'){
-                ctx.drawImage(jugadorAtras,player.x,player.y,50,55); 
-                 
-            }
-          
-
+            ctx.drawImage(jugadorFrente,player.x,player.y,50,55);
             player2.dibujar(ctx);
 
             
@@ -139,7 +105,19 @@
             ctx.font ="15px Arial"
             ctx.fillText("Score :"+score+"  Speed :"+speed,20,20);
 
-     
+            if(direction == 'right'){
+                ctx.drawImage(jugadorDerecha,player.x,player.y,50,55); 
+            }
+            if(direction == 'left'){
+                ctx.drawImage(jugadorIzquierda,player.x,player.y,50,55); 
+            }
+            if(direction == 'down'){
+                ctx.drawImage(jugadorFrente,player.x,player.y,50,55);  
+            }
+            if(direction == 'up'){
+                ctx.drawImage(jugadorAtras,player.x,player.y,50,55); 
+            }
+
             if(!pausa){
                 update();
             }else{
@@ -161,20 +139,7 @@
             
         }
         function update(){
-            
-            if(direction == 'right'){
-                player.x +=speed;
-            }
-            if(direction == 'left'){
-                player.x -=speed;
-            }
-            if(direction == 'down'){
-                player.y +=speed;
-            }
-            if(direction == 'up'){
-                player.y -=speed;
-            }
-           
+    
             if(player.se_tocan(player2)){
 
                 player2.x=generateRandomIntegerInRange(500);
@@ -219,7 +184,7 @@
                 window.webkitRequestAnimationFrame ||
                 window.mozRequestAnimationFrame ||
                 function (callback) {
-                    window.setTimeout(callback, 17);
+                    window.setTimeout(callback, 60);
                 };
         }());
 
