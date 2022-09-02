@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Examen</title>
 </head>
 <body>
     <style>
@@ -116,18 +116,14 @@
 
         var pika = new Image();
         var musicaAmbiental = new Audio();
-        
-        function start(){
+        var musicaWin = new Audio();
 
-             cv  =document.getElementById('mycanvas');
-             ctx  = cv.getContext('2d');
+        var a=null,b=null,c=null;
+        var casa1= new Image();
+        var casa2= new Image();
+        var edificio= new Image();
 
-            player =new Cuadraro(superX,superY,30,30,'red');
-            playerAmigo1 =new Cuadraro(superX-2,superY-20,30,30,'red');
-            playerAmigo2 =new Cuadraro(superX-2,superY-40,30,30,'red');
-            
-            pikachu =new Cuadraro(990,950,40,40,'red');
-
+        function agregarIMG() {
             bg.src = '/img&sonidos/bgpasto.png';
             pared.src = '/img&sonidos/paredes.png';
 
@@ -148,6 +144,28 @@
 
             pika.src = '/img&sonidos/pikachu.png';
             musicaAmbiental.src = '/img&sonidos/pokemonSound.mp3';
+            musicaWin.src="/img&sonidos/win.mp3";
+
+            casa1.src = '/img&sonidos/casa1.png';
+            casa2.src = '/img&sonidos/casa2.png';
+            edificio.src = '/img&sonidos/edificio.png';
+        }
+        function start(){
+
+             cv  =document.getElementById('mycanvas');
+             ctx  = cv.getContext('2d');
+
+            player =new Cuadraro(superX,superY,30,30,'red');
+            playerAmigo1 =new Cuadraro(superX-2,superY-20,30,30,'red');
+            playerAmigo2 =new Cuadraro(superX-2,superY-40,30,30,'red');
+            
+            pikachu =new Cuadraro(990,950,40,40,'red');
+
+            a =new Cuadraro(1020,100,300,250);
+            b = new Cuadraro(1020,400,100,100);
+            c = new Cuadraro(1020,700,100,100);
+
+            agregarIMG();
 
             for (var i = 0; i < 200; i++) {
                 var n = new Cuadraro(coordenadas[i][0], coordenadas[i][1], coordenadas[i][2], coordenadas[i][3], "white");
@@ -193,23 +211,33 @@
                 pausa =(pausa)? false : true;
             }
         })
-      
-        function paint(){
-            musicaAmbiental.play();
-            window.requestAnimationFrame(paint);
-           
+        function drawI(){
             ctx.drawImage(bg,0,0,1400,1000)
            
             ctx.drawImage(jugadorFrente,player.x,player.y,30,35);
             ctx.drawImage(amigo1Frente,playerAmigo1.x,playerAmigo1.y,30,35);
             ctx.drawImage(amigo2Frente,playerAmigo2.x,playerAmigo2.y,30,35);
 
-           ctx.drawImage(pika,pikachu.x,pikachu.y,30,30)
+            ctx.drawImage(pika,pikachu.x,pikachu.y,35,35);
 
+            ctx.drawImage(edificio,a.x,a.y,170,300);
+            ctx.drawImage(casa1,b.x,b.y,170,300);
+            ctx.drawImage(casa2,c.x,c.y,170,300);
+        }
+
+      
+        function paint(){
+            // musicaAmbiental.play();
+            window.requestAnimationFrame(paint);
+            drawI();
             
-            ctx.fillStyle='black';
-            ctx.font ="15px Arial"
-            ctx.fillText("Score :"+score+"  Speed :"+speed,20,20);
+            const timeoutId = setTimeout(function(){
+            }, 1000);
+
+            ctx.fillStyle ='white';
+            ctx.font ="30px Arial"
+            ctx.fillText("Time : "+timeoutId,1220,500);
+            
 
             if(direction == 'right'){
                 ctx.drawImage(jugadorDerecha,player.x,player.y,30,30); 
@@ -242,7 +270,7 @@
                 ctx.font ="30px Arial"
                 ctx.fillText("P A U S E",700,500);
                 musicaAmbiental.pause();
-                
+               
             }
             
             for (var i = 0; i < 200; i++) {
@@ -257,12 +285,14 @@
     
             if(player.se_tocan(pikachu)){
                 gameOver =(gameOver)? false : true;
+                musicaAmbiental.pause();
                 ctx.fillStyle='rgb(0,0,0,0.5)';
                 ctx.fillRect(0,0,1400,1000);
 
                 ctx.fillStyle='white';
                 ctx.font ="30px Arial"
                 ctx.fillText("Encontraste a pikachu",230,230);
+                musicaWin.play();
 
             }
             for(var i = 0; i < 200; i++) {
@@ -297,9 +327,6 @@
                     }
                 }
             }
-            
-            
-              
         }
         function Cuadraro(x,y,w,h,c){
             this.x = x;
@@ -334,11 +361,6 @@
                     window.setTimeout(callback, 60);
                 };
         }());
-
-        // Generate a random number between 2 and 10, including both 2 and 10
-        function generateRandomIntegerInRange( max) {
-            return Math.floor(Math.random() * (max  + 1));
-        }
 
 </script>
 </body>
