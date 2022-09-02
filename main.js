@@ -107,31 +107,31 @@ var cv  =null;
         var edificio= new Image();
 
         function agregarIMG() {
-            bg.src = '/img&sonidos/bgpasto.png';
-            pared.src = '/img&sonidos/paredes.png';
+            bg.src = 'img&sonidos/bgpasto.png';
+            pared.src = 'img&sonidos/paredes.png';
 
-            jugadorFrente.src = '/img&sonidos/ashFrente.png';
-            jugadorDerecha.src = '/img&sonidos/ashIzquierda.png';
-            jugadorIzquierda.src = '/img&sonidos/ahsiz.png';
-            jugadorAtras.src = '/img&sonidos/ashAtras.png';
+            jugadorFrente.src = 'img&sonidos/ashFrente.png';
+            jugadorDerecha.src = 'img&sonidos/ashIzquierda.png';
+            jugadorIzquierda.src = 'img&sonidos/ahsiz.png';
+            jugadorAtras.src = 'img&sonidos/ashAtras.png';
 
-            amigo1Frente.src = '/img&sonidos/amigo1Frente.png';
-            amigo1Izquierda.src = '/img&sonidos/amigo1izquierda.png';
-            amigo1Derecha.src = '/img&sonidos/amigo1derecha.png';
-            amigo1Atras.src = '/img&sonidos/amigo1atras.png';
+            amigo1Frente.src = 'img&sonidos/amigo1Frente.png';
+            amigo1Izquierda.src = 'img&sonidos/amigo1izquierda.png';
+            amigo1Derecha.src = 'img&sonidos/amigo1derecha.png';
+            amigo1Atras.src = 'img&sonidos/amigo1atras.png';
 
-            amigo2Frente.src = '/img&sonidos/amigo2frente.png';
-            amigo2Izquierda.src = '/img&sonidos/amigo2izquierda.png';
-            amigo2Derecha.src = '/img&sonidos/amigo2derecha.png';
-            amigo2Atras.src = '/img&sonidos/amigo2atras.png';
+            amigo2Frente.src = 'img&sonidos/amigo2frente.png';
+            amigo2Izquierda.src = 'img&sonidos/amigo2izquierda.png';
+            amigo2Derecha.src = 'img&sonidos/amigo2derecha.png';
+            amigo2Atras.src = 'img&sonidos/amigo2atras.png';
 
-            pika.src = '/img&sonidos/pikachu.png';
-            musicaAmbiental.src = '/img&sonidos/pokemonSound.mp3';
-            musicaWin.src="/img&sonidos/win.mp3";
+            pika.src = 'img&sonidos/pikachu.png';
+            musicaAmbiental.src = 'img&sonidos/pokemonSound.mp3';
+            musicaWin.src="img&sonidos/win.mp3";
 
-            casa1.src = '/img&sonidos/casa1.png';
-            casa2.src = '/img&sonidos/casa2.png';
-            edificio.src = '/img&sonidos/edificio.png';
+            casa1.src = 'img&sonidos/casa1.png';
+            casa2.src = 'img&sonidos/casa2.png';
+            edificio.src = 'img&sonidos/edificio.png';
         }
         function start(){
 
