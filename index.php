@@ -227,7 +227,7 @@
 
       
         function paint(){
-            // musicaAmbiental.play();
+            musicaAmbiental.play();
             window.requestAnimationFrame(paint);
             drawI();
             
