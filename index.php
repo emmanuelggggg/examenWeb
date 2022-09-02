@@ -293,6 +293,7 @@
                 ctx.font ="30px Arial"
                 ctx.fillText("Encontraste a pikachu",230,230);
                 musicaWin.play();
+                
 
             }
             for(var i = 0; i < 200; i++) {
